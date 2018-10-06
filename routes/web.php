@@ -41,3 +41,8 @@ Route::prefix('admin')->group(function(){
             name('admin.password.reset');
 
 });
+
+/* crud oprations **/
+
+   Route::resource('passports','PassportController');
+
