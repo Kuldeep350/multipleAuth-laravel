@@ -13,8 +13,7 @@ class PassportController extends Controller
      */
     public function index()
     {
-      
-         $passports=\App\Passport::all();
+        $passports=\App\Passport::all();
         return view('index',compact('passports'));
     }
 
@@ -93,6 +92,7 @@ class PassportController extends Controller
         $passport->name=$request->get('name');
         $passport->email=$request->get('email');
         $passport->number=$request->get('number');
+        $passport->filename=$request->get('filename');
         $passport->office=$request->get('office');
         $passport->save();
         return redirect('passports');

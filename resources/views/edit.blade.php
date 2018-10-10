@@ -32,6 +32,13 @@
               <input type="text" class="form-control" name="number" value="{{$passport->number}}">
             </div>
           </div>
+          <div class="row">
+          <div class="col-md-4"></div>
+          <div class="form-group col-md-4">
+            <label for="name">Image:</label>
+            <input type="file" class="form-control" name="name" value="{{$passport->filename}}">
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-4"></div>
             <div class="form-group col-md-4" style="margin-left:38px">

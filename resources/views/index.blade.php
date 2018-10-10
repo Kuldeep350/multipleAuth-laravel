@@ -21,15 +21,15 @@
         <th>Date</th>
         <th>Email</th>
         <th>Phone Number</th>
+        <th>Image</th>
         <th>Passport Office</th>
         <th colspan="2">Action</th>
       </tr>
     </thead>
     <tbody>
-      
       @foreach($passports as $passport)
       @php
-        $date=date('Y-m-d', $passport['date']);
+        $date=date('d-m-Y', $passport['date']);
         @endphp
       <tr>
         <td>{{$passport['id']}}</td>
@@ -37,6 +37,7 @@
         <td>{{$date}}</td>
         <td>{{$passport['email']}}</td>
         <td>{{$passport['number']}}</td>
+        <td><img src="/images/{{ $passport['filename'] }}" alt="hello" height="90" width="90"></td>
         <td>{{$passport['office']}}</td>
         
         <td><a href="{{action('PassportController@edit', $passport['id'])}}" class="btn btn-warning">Edit</a></td>
