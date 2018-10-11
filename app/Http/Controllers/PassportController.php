@@ -36,6 +36,15 @@ class PassportController extends Controller
      */
     public function store(Request $request)
     {
+         $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'number' => 'required',
+            'filename' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'date' => 'required',
+            'office' => 'required',
+            
+        ]);
          if($request->hasfile('filename'))
          {
             $file = $request->file('filename');
@@ -86,13 +95,20 @@ class PassportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(request $request, $id)
     {
-       $passport= \App\Passport::find($id);
+       
+         if($request->hasfile('filename'))
+         {
+            $file = $request->file('filename');
+            $name=time().$file->getClientOriginalName();
+            $passport->filename=$name;
+            $file->move(public_path().'/images/', $name);
+         }
+        $passport= \App\Passport::find($id);
         $passport->name=$request->get('name');
         $passport->email=$request->get('email');
         $passport->number=$request->get('number');
-        $passport->filename=$request->get('filename');
         $passport->office=$request->get('office');
         $passport->save();
         return redirect('passports');

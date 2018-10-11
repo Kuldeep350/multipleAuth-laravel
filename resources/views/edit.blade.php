@@ -35,8 +35,13 @@
           <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
+            @if ("/images/{{ $passport[filename] }}")
+        <img src="/images/{{$passport->filename}}"height="90" width="90"><br> 
+    @else
+            <p>No image found</p>
+    @endif
             <label for="name">Image:</label>
-            <input type="file" class="form-control" name="name" value="{{$passport->filename}}">
+            <input type="file" class="form-control" name="filename" value="{{$passport->filename}}">
           </div>
         </div>
         <div class="row">

@@ -12,6 +12,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>  
   </head>
   <body>
+     @if ($errors->any())
+          <div class="alert alert-primary">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div><br />
+      @endif
     <div class="container">
       <h2>Passport Appointment System</h2><br/>
       <form method="post" action="{{url('passports')}}" enctype="multipart/form-data">
@@ -55,6 +64,7 @@
             <div class="form-group col-md-4">
                 <lable>Passport Office</lable>
                 <select name="office">
+                  <option value="">seclect</option>
                   <option value="Mumbai">Mumbai</option>
                   <option value="Chennai">Chennai</option>
                   <option value="Delhi">Delhi</option>  
@@ -73,7 +83,7 @@
     <script type="text/javascript">  
         $('#datepicker').datepicker({ 
             autoclose: true,   
-            format: 'dd-mm-yyyy'  
+            format: 'dd/mm/yyyy'  
          });  
     </script>
   </body>
